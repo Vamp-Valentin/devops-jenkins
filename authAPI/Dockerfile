@@ -1,15 +1,13 @@
 FROM node
 
-    WORKDIR /home/node/app
+WORKDIR /home/node/app
 
-    COPY *.js /home/node/app
+COPY . /home/node/app/.
 
-    COPY package*.json /home/node/app
+RUN ["npm", "install"]
 
-    RUN ["npm", "install"]
+ENV NODE_ENV=production
 
-    ENV NODE_ENV=production
+CMD ["node", "index.js"]
 
-    CMD ["node", "index.js"]
-
-    EXPOSE 3000
+EXPOSE 3000
